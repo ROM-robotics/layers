@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# Download Yocto layers for Romenix - kirkstone branch
+
+echo "Downloading Yocto layers (kirkstone branch)..."
+
+git clone -b kirkstone https://github.com/ros/meta-intel.git
+git clone -b kirkstone https://github.com/ros/meta-openembedded.git
+git clone -b kirkstone https://github.com/ros/meta-rom-intel-tui-ros2.git
+
+echo "Download complete!"

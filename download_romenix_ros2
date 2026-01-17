@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# Download Yocto layers for Romenix ROS2 - kirkstone branch
+
+echo "Downloading Yocto layers (kirkstone branch)..."
+
+# meta-ros
+if [ ! -d "meta-ros" ]; then
+    echo "Cloning meta-ros..."
+    git clone -b kirkstone https://github.com/ros/meta-ros.git
+else
+    echo "meta-ros already exists, skipping..."
+fi
+
+echo "Download complete!"

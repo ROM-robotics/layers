@@ -4,12 +4,11 @@
 
 echo "Downloading Yocto layers (kirkstone branch)..."
 
-# meta-ros
-if [ ! -d "meta-ros" ]; then
-    echo "Cloning meta-ros..."
-    git clone -b kirkstone https://github.com/ros/meta-ros.git
-else
-    echo "meta-ros already exists, skipping..."
-fi
+git clone -b kirkstone-romenix git@github.com:ROM-robotics/meta-rom-intel-tui.git
+
+git clone -b kirkstone git@github.com:yoctoproject/poky.git
+git clone -b kirkstone git://git.yoctoproject.org/meta-intel
+git clone -b kirkstone git@github.com:openembedded/meta-openembedded.git
+git clone -b kirkstone https://github.com/ros/meta-ros.git
 
 echo "Download complete!"

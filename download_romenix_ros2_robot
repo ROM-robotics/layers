@@ -4,11 +4,15 @@
 
 echo "Downloading Yocto layers (kirkstone branch)..."
 
-git clone -b git@github.com:ROM-robotics/meta-rom-intel-tui.git
+git clone git@github.com:ROM-robotics/meta-rom-intel-tui.git
 cd meta-rom-intel-tui
-git checkout kirkstone-romenix-humble-rom ; cd ..
+git checkout kirkstone-romenix-humble-robot 
 
-git clone -b kirkstone git@github.com:yoctoproject/poky.git
+cd ../../
+pwd
+git clone -b kirkstone git://git.yoctoproject.org/poky
+cd layers
+pwd
 git clone -b kirkstone git://git.yoctoproject.org/meta-intel
 git clone -b kirkstone git@github.com:openembedded/meta-openembedded.git
 git clone -b kirkstone https://github.com/ros/meta-ros.git

@@ -5,7 +5,10 @@
 # ( https://layers.openembedded.org/ )
 echo "Downloading Yocto layers (kirkstone branch)..."
 
-git clone -b kirkstone-romenix git@github.com:ROM-robotics/meta-rom-intel-tui.git
+git clone git@github.com:ROM-robotics/meta-rom-intel-tui.git
+cd meta-rom-intel-tui
+git checkout kirkstone-romenix ; cd ..
+
 
 git clone -b kirkstone git@github.com:yoctoproject/poky.git
 git clone -b kirkstone git://git.yoctoproject.org/meta-intel

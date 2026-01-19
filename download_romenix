@@ -1,7 +1,8 @@
 #!/bin/bash
 
 # Download Yocto layers for Romenix - kirkstone branch
-# Repo Link ( https://git.yoctoproject.org/ ) ( https://layers.openembedded.org/ )
+# Repo Link ( https://git.yoctoproject.org/ ) 
+# ( https://layers.openembedded.org/ )
 echo "Downloading Yocto layers (kirkstone branch)..."
 
 git clone -b kirkstone-romenix git@github.com:ROM-robotics/meta-rom-intel-tui.git

@@ -16,5 +16,7 @@ pwd
 git clone -b kirkstone git://git.yoctoproject.org/meta-intel
 git clone -b kirkstone git@github.com:openembedded/meta-openembedded.git
 git clone -b kirkstone https://github.com/ros/meta-ros.git
+git clone -b kirkstone https://github.com/meta-qt5/meta-qt5.git 
+git clone -b kirkstone https://github.com/kraj/meta-clang
 
 echo "Download complete!"

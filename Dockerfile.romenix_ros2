@@ -1,0 +1,62 @@
+# Author: Mr Robot
+# Description: Dockerfile for setting up a Yocto build environment for ROMenix on Ubuntu 22.04
+FROM ubuntu:22.04
+
+ENV DEBIAN_FRONTEND=noninteractive
+ENV LANG=en_US.UTF-8
+ENV LC_ALL=en_US.UTF-8
+
+# Install Yocto build dependencies
+RUN apt update && apt install -y \
+    gawk wget git diffstat unzip texinfo gcc build-essential chrpath socat cpio \
+    python3 python3-pip python3-pexpect python3-jinja2 python3-subunit \
+    xz-utils debianutils iputils-ping \
+    libsdl1.2-dev xterm curl locales rsync bc \
+    libncurses5-dev libncursesw5-dev zstd file lz4 liblz4-dev \
+    lsb-release sudo vim \
+    && locale-gen en_US.UTF-8 \
+    && rm -rf /var/lib/apt/lists/*
+
+# Create build user
+ARG USER=mr_robot
+ARG UID=1000
+ARG GID=1000
+
+RUN groupadd -g ${GID} ${USER} && \
+    useradd -m -u ${UID} -g ${GID} -s /bin/bash ${USER} && \
+    echo "${USER} ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+
+USER ${USER}
+WORKDIR /home/${USER}/Desktop/yocto
+
+CMD ["/bin/bash"]
+
+
+
+# # This sets the default machine to be qemux86-64 if no other machine is selected:
+# MACHINE ??= "intel-corei7-64"
+
+# # Set the ROMenix distribution
+# DISTRO ?= "romenix"
+
+# # Set the number of threads for building in build/conf/local.conf
+# BB_NUMBER_THREADS = "8"
+# BB_NUMBER_PARSE_THREADS = "8"
+# PARALLEL_MAKE = "-j 8"
+
+# docker run -it --rm -v /home/mr_robot/Desktop/yocto:/home/mr_robot/Desktop/yocto --name romenix-builder kyawswartunhub/yocto:kirkstone
+# gcloud compute instances create instance-20260128-072817 \
+#     --project=hallowed-chain-471421-n5 \
+#     --zone=asia-south1-c \
+#     --machine-type=e2-custom-16-8192 \
+#     --network-interface=network-tier=PREMIUM,stack-type=IPV4_ONLY,subnet=default \
+#     --maintenance-policy=MIGRATE \
+#     --provisioning-model=STANDARD \
+#     --service-account=356530250501-compute@developer.gserviceaccount.com \
+#     --scopes=https://www.googleapis.com/auth/devstorage.read_only,https://www.googleapis.com/auth/logging.write,https://www.googleapis.com/auth/monitoring.write,https://www.googleapis.com/auth/service.management.readonly,https://www.googleapis.com/auth/servicecontrol,https://www.googleapis.com/auth/trace.append \
+#     --create-disk=auto-delete=yes,boot=yes,device-name=instance-20260128-072817,image=projects/cos-cloud/global/images/cos-113-18244-521-74,mode=rw,size=150,type=pd-balanced \
+#     --no-shielded-secure-boot \
+#     --shielded-vtpm \
+#     --shielded-integrity-monitoring \
+#     --labels=goog-ec-src=vm_add-gcloud \
+#     --reservation-affinity=any

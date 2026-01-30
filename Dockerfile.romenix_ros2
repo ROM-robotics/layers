@@ -44,7 +44,9 @@ CMD ["/bin/bash"]
 # BB_NUMBER_PARSE_THREADS = "8"
 # PARALLEL_MAKE = "-j 8"
 
+
 # docker run -it --rm -v /home/mr_robot/Desktop/yocto:/home/mr_robot/Desktop/yocto --name romenix-builder kyawswartunhub/yocto:kirkstone
+# 
 # gcloud compute instances create instance-20260128-072817 \
 #     --project=hallowed-chain-471421-n5 \
 #     --zone=asia-south1-c \
